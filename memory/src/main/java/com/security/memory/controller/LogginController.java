@@ -12,7 +12,7 @@ public class LogginController {
 
  
     @GetMapping("/private")
-    @PreAuthorize("hasAuthority('DEVELOPER')") // Asegura que solo los usuarios con autoridad 'DEVELOPER' puedan acceder a este endpoint
+    @PreAuthorize("hasAnyAuthority('DEVELOPER','ADMIN')") // Asegura que solo los usuarios con autoridad 'DEVELOPER' puedan acceder a este endpoint
     public String developerMenssage(){
         return "Welcome to the DEVELOPER page!"; // Mensaje de bienvenida para la página de administrador
     }
@@ -33,9 +33,11 @@ public class LogginController {
     @PreAuthorize("hasAuthority('USER')") // Asegura que solo los usuarios
     public String actuatorMenssage(){
         return "Welcome to the ACTUATOR page!"; // Mensaje de bienvenida para la
-
+    }
+    
+    
     
 
-    }
+   
 
 }

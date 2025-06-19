@@ -22,7 +22,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableMethodSecurity // Habilita la seguridad a nivel de método, permitiendo el uso de anotaciones como @PreAuthorize
 public class SecurityConfig {
     
-    @Bean
+    /* @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf((csrf) -> csrf.disable())//Desabilitado CSRF para permitir peticiones desde el cliente 
@@ -39,7 +39,7 @@ public class SecurityConfig {
             
             return http.build();
             
-    }
+    } */
 
     @Bean
     public UserDetailsService users(){
