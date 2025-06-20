@@ -22,24 +22,25 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableMethodSecurity // Habilita la seguridad a nivel de método, permitiendo el uso de anotaciones como @PreAuthorize
 public class SecurityConfig {
     
-    /* @Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf((csrf) -> csrf.disable())//Desabilitado CSRF para permitir peticiones desde el cliente 
             .httpBasic((httpBasic) -> httpBasic.disable()) //Desabilitado HTTP Basic para evitar autenticación básica
-            .formLogin(withDefaults()) //Habilitado el formulario de inicio de sesión por defecto
-            .authorizeHttpRequests((auth) -> auth // Configuracion de autenticación y autorizacion
+            .formLogin(form -> form
+                    .defaultSuccessUrl("/auth/home", true)); //Habilitado el formulario de inicio de sesión por defecto
+            /* .authorizeHttpRequests((auth) -> auth // Configuracion de autenticación y autorizacion
                 .requestMatchers("login","/css/", "/js/", "/images/").permitAll() //Permitir acceso a la ruta de inicio de sesión sin autenticación
                 .requestMatchers("/api").hasAuthority("ADMIN")//Permitir acceso a la ruta /api solo para usuarios con autoridad Admin
                 .requestMatchers("/private").hasAuthority("DEVELOPER")//Permitir acceso a la ruta  solo a usuarios DEVELOPER
                 .requestMatchers("/public").authenticated()//Permitir aceso a la ruta a culaquier usuario autentificado
-                .requestMatchers("/actuator/**").hasAuthority("USER") //Permitir acceso a los endpoints de Actuator
-                    .anyRequest().authenticated()
-                    );
+                .requestMatchers("/actuator/**").hasAuthority("USER") //Permitir acceso a los endpoints de Actuator */
+                   /*  .anyRequest().authenticated()
+                    ); */
             
             return http.build();
             
-    } */
+    }
 
     @Bean
     public UserDetailsService users(){
