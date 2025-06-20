@@ -1,30 +1,19 @@
 package com.security.memory;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 
 @SpringBootTest
-class MemoryApplicationTests {
+public class MemoryApplicationTests {
 
-	@Autowired
-	private MemoryApplication memoryApplication;
+    private static final Logger logger = LoggerFactory.getLogger(MemoryApplicationTests.class);
 
-	@Test
-	@WithMockUser(username = "admin", roles = {"ADMIN", "DEVELOPER", "USER"})
-	public void testWithMockUser() {
-		//Este test verifica que el contexto de Spring se carga correctamente con un usuario simulado
-		//con los roles ADMIN, DEVELOPER y USER.
-		//No se requiere ninguna aserción aquí, ya que el objetivo es simplemente verificar
-		//que el contexto de la aplicación se carga sin errores.
-		//Si el contexto no se carga correctamente, Spring lanzará una excepción y el test
-		//fallará automáticamente.
-		System.out.println("Context loaded with mock user: ");
-	}
-
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    @WithMockUser(username = "admin", roles = {"ADMIN", "DEVELOPER", "USER"})
+    public void testWithMockUser() {
+        logger.info("Context loaded with mock user");
+    }
 }
