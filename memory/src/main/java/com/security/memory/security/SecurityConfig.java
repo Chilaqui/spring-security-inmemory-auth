@@ -53,7 +53,7 @@ public class SecurityConfig {
         UserDetails admin = users
             .username("admin")
             .password("4080")
-            .authorities("ADMIN")
+            .authorities("ADMIN","USER", "DEVELOPER")
             .build();
 
         UserDetails developer = users
